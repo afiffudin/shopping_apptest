@@ -1,0 +1,22 @@
+name: shopping_app
+description: A new Flutter project.
+
+publish_to: 'none' # Remove this line if you are publishing to pub.dev
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.0.0+4
+  path_provider: ^2.0.9
+  provider: ^6.0.0
+  http: ">=0.13.0 <0.15.0" # Allows a range of versions
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
