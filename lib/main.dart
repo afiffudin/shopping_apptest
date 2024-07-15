@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import './screens/login_screen.dart';
 import './screens/product_search_screen.dart';
 import './screens/signup_screen.dart';
+import './screens/cart_screen.dart';
 import './providers/auth.dart';
 import './providers/products.dart';
 import './providers/cart.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         routes: {
           '/search': (ctx) => ProductSearchScreen(),
           '/signup': (ctx) => SignupScreen(),
+          '/cart': (ctx) => CartScreen(),
         },
       ),
     );

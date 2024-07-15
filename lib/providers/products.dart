@@ -1,3 +1,4 @@
+// lib/providers/products.dart
 import 'package:flutter/material.dart';
 import '../models/product.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../models/product.dart';
 import '../providers/products.dart';
+import '../providers/cart.dart';
+import '../models/product.dart';
 
 class ProductSearchScreen extends StatefulWidget {
   @override
@@ -18,6 +18,14 @@ class _ProductSearchScreenState extends State<ProductSearchScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Search Products'),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.of(context).pushNamed('/cart');
+            },
+          ),
+        ],
       ),
       body: Column(
         children: [
@@ -41,9 +49,32 @@ class _ProductSearchScreenState extends State<ProductSearchScreen> {
                 return ListTile(
                   title: Text(_searchResults[index].title),
                   subtitle: Text('\$${_searchResults[index].price}'),
-                  onTap: () {
-                    // Add to cart logic here
-                  },
+                  trailing: IconButton(
+                    icon: Icon(Icons.add_shopping_cart),
+                    onPressed: () {
+                      Provider.of<Cart>(context, listen: false).addItem(
+                        _searchResults[index].id,
+                        _searchResults[index].title,
+                        _searchResults[index].price,
+                      );
+                      showDialog(
+                        context: context,
+                        builder: (ctx) => AlertDialog(
+                          title: Text('Success!'),
+                          content: Text(
+                              '${_searchResults[index].title} added to cart.'),
+                          actions: <Widget>[
+                            TextButton(
+                              child: Text('Okay'),
+                              onPressed: () {
+                                Navigator.of(ctx).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
                 );
               },
             ),
